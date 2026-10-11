@@ -1,0 +1,41 @@
+# License
+
+## Documentation and configuration in this repository
+
+The written documentation (`README.md` (Chinese) and `README.en.md` (English), everything under
+`docs/`, `logs/README.md`, `reports/`, `tools/README.md`) and the OpenCore configuration files
+(`EFI/OC/config*.plist`) are licensed under
+
+**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
+
+Full legal text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+You are free to share and adapt this material, provided that you:
+
+- **give appropriate credit** — link back to this repository;
+- **do not use it commercially**;
+- **share your adaptations under the same licence.**
+
+This matches the terms the NVIDIA driver itself is distributed under (non-commercial), so a
+commercial build of this configuration is not something this repository can grant you anyway.
+
+## Third-party binaries in `EFI/`
+
+The bootloader, kexts, ACPI tables and OpenCanopy resources under `EFI/` are **not** covered by the
+licence above. They are unmodified copies of other people's work and remain under their own upstream
+licences — mostly BSD-3-Clause for the Acidanthera projects, GPL-2.0 for the VoodooI2C / VoodooPS2
+family, `itlwm` and several others. See
+[docs/sources.md](docs/sources.md) for the project list and check each upstream `LICENSE` before
+redistributing or reusing them.
+
+## The NVIDIA driver
+
+The NullMoth driver is **not distributed in this repository** in any form. It is the work of its
+authors and is subject to its own terms. See
+[docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md).
+
+## No warranty
+
+This material is provided as-is, without warranty of any kind. Applying an EFI configuration to a
+machine can render it unbootable. You are responsible for your own hardware, your own data and your
+own backups.

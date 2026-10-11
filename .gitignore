@@ -1,0 +1,27 @@
+# macOS metadata — these sit next to EFI/ on a real install stick and are useless in git
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+VolumeIcon.icns
+
+# Windows metadata
+Thumbs.db
+desktop.ini
+System Volume Information/
+
+# Never commit the NVIDIA driver, in any form.
+# Note: nothing under EFI/ is ignored on purpose — the kexts ARE the payload of this repo.
+NullMoth/
+nullmoth-*
+1401-Mac-*.zip
+*.tar.gz
+*.zip
+
+# Editor / scratch
+*.bak
+*.orig
+*.tmp
+*~
