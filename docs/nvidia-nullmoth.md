@@ -6,7 +6,17 @@ produce a picture.
 
 What makes this machine usable is a third-party NVIDIA driver for macOS 15 called **NullMoth**. It is
 not mine, it is not in this repository, and essentially all of the credit for this build belongs to
-its authors.
+its authors, **[NullMoth Systems](https://nullmothsystems.com)**.
+
+**Where to get it** (the project's own distribution channel — nothing here is mirrored):
+
+| What | Where |
+|---|---|
+| Author / project site | <https://nullmothsystems.com> |
+| NVIDIA driver for macOS 15 | <https://github.com/nullmoth/nvidia-macos-driver> |
+| Releases — the package used on this machine is **1.13.0** | <https://github.com/nullmoth/nvidia-macos-driver/releases> |
+| `1401` boot-stick tool (Windows), same release train | <https://github.com/nullmoth/1401> |
+| GitHub organisation | <https://github.com/nullmoth> |
 
 ## What it provides
 
@@ -73,7 +83,9 @@ The stick carried:
 - `NullMoth/1401-Mac-1.13.0.zip` — 2,305,068 bytes
 
 **Neither is in this repository**, and neither is `pkgroot/` nor any `.kext`, `.bundle` or `.dylib`
-extracted from them. Get the driver from the project's own distribution channel.
+extracted from them. Get the driver from
+<https://github.com/nullmoth/nvidia-macos-driver/releases> (the `1401` stick tool comes from
+<https://github.com/nullmoth/1401>) and follow the instructions shipped inside the package.
 
 What *is* included, because it is evidence rather than redistribution:
 
@@ -86,6 +98,9 @@ What *is* included, because it is evidence rather than redistribution:
 
 ## Thank you
 
-To the NullMoth authors, and to everyone who publishes Legion hackintosh configurations and the
-`Acidanthera` projects this EFI is built from: this laptop only runs macOS because you published your
-work. Any error in this repository is mine; the parts that work are yours.
+To the [NullMoth Systems](https://nullmothsystems.com) authors
+([GitHub](https://github.com/nullmoth), driver
+<https://github.com/nullmoth/nvidia-macos-driver>, tool <https://github.com/nullmoth/1401>), and to
+everyone who publishes Legion hackintosh configurations and the `Acidanthera` projects this EFI is
+built from: this laptop only runs macOS because you published your work. Any error in this repository
+is mine; the parts that work are yours.

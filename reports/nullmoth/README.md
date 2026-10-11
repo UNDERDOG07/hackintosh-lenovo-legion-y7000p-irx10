@@ -34,7 +34,9 @@ The installer stick also carried:
 - `pkgroot/` — `install.sh`, `uninstall.sh`, four `.kext` bundles, three GPU bundles, GSP firmware
 
 **None of it is mirrored here**, and no `.kext`, `.bundle`, `.dylib` or firmware blob from it appears
-anywhere in this repository. Get the driver from the project's own distribution channel; see
+anywhere in this repository. Get both packages from the project's own distribution channel:
+**driver** <https://github.com/nullmoth/nvidia-macos-driver/releases>, **`1401` stick tool**
+<https://github.com/nullmoth/1401>, **author/project site** <https://nullmothsystems.com>. See
 [`../../docs/nvidia-nullmoth.md`](../../docs/nvidia-nullmoth.md).
 
 The package's own metadata, quoted for reference (`pkgroot/BASELINE-IDENTITY.json`, version 1.13.0):

@@ -11,7 +11,7 @@ scan on this machine reports.
 |---|---|---|---|
 | CPU | Intel Core i9-14900HX, Raptor Lake-HX, 24 cores / 32 threads | — | ✅ no Apple config page, but works with the right quirks |
 | iGPU | Intel UHD Graphics, Xe architecture | `8086:A788` | ❌ **no driver exists**, in any macOS version |
-| dGPU | NVIDIA RTX 5060 Laptop GPU, BAR1 8192 MB | `10DE:2D59` / subsystem `17AA:802F` | ✅ via the NullMoth driver, macOS 15 only |
+| dGPU | NVIDIA RTX 5060 Laptop GPU, BAR1 8192 MB | `10DE:2D59` / subsystem `17AA:802F` | ✅ via the [NullMoth](https://github.com/nullmoth/nvidia-macos-driver) driver, macOS 15 only |
 | Panel | BOE NE160QDM-NZB, 2560×1600, 240 Hz capable | — | 🟡 60 Hz, fixed resolution |
 | Wi-Fi | AX1690i (Intel CNVi part), **fitted by the owner** as a replacement for the factory card | `8086:7A70` | ❌ not on the `itlwm` support list |
 | Ethernet | Realtek PCIe GbE | `10EC:8168` | ✅ works (`RealtekRTL8111`) — the reliable network path on this machine |

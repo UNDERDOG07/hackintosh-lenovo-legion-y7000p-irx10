@@ -21,8 +21,8 @@
 
 | # | 步骤 | 实际做了什么 | 细节 |
 |---|---|---|---|
-| 1 | 确认显卡驱动 | 任何 macOS 都没有 Intel 核显驱动，所以内屏只能走独显。先确认这颗 GPU 有驱动、驱动**只覆盖 macOS 15**、且内屏物理接在独显上（于是 BIOS 能切独显直连） | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) · [docs/hardware.md](docs/hardware.md) |
-| 2 | 用 1401 工具做引导盘 | 一个 Windows 工具下载 macOS Sequoia 15、把本仓库的 `EFI/` 写进 FAT32 U 盘，卷标 `1401`。成品是 `EFI/` + `com.apple.recovery.boot/` + 驱动包 | [docs/install-guide.md](docs/install-guide.md#step-2--build-the-boot-stick) |
+| 1 | 确认显卡驱动 | 任何 macOS 都没有 Intel 核显驱动，所以内屏只能走独显。先确认这颗 GPU 有驱动（[NullMoth](https://github.com/nullmoth/nvidia-macos-driver)）、驱动**只覆盖 macOS 15**、且内屏物理接在独显上（于是 BIOS 能切独显直连） | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) · [docs/hardware.md](docs/hardware.md) |
+| 2 | 用 [1401](https://github.com/nullmoth/1401) 工具做引导盘 | 一个 Windows 工具下载 macOS Sequoia 15、把本仓库的 `EFI/` 写进 FAT32 U 盘，卷标 `1401`。成品是 `EFI/` + `com.apple.recovery.boot/` + 驱动包 | [docs/install-guide.md](docs/install-guide.md#step-2--build-the-boot-stick) |
 | 3 | 改 BIOS | 关 Secure Boot、关 CSM、开 Above 4G、开 Resizable BAR、**显卡模式切独显直连** | [docs/hardware.md](docs/hardware.md#bios) |
 | 4 | 首次启动 panic → 改 `config.plist` | 交付时的配置里带着三条会改动超线程的 `Kernel → Patch`，内核在交权后 0.85 秒就挂了。把它们禁用，就得到了能用的配置 | [docs/troubleshooting.md](docs/troubleshooting.md) |
 | 5 | 进桌面，再装驱动 | macOS 是在完全没有显卡加速（只有 framebuffer）的状态下装完的。驱动是**进系统之后**装的，装进 `/Library/Extensions` —— EFI 里不放任何显卡相关的东西 | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) |
@@ -39,7 +39,7 @@
 
 | 项目 | 状态 | 说明 |
 |---|---|---|
-| 显卡 | ✅ NVIDIA RTX 5060 Laptop，Metal 加速正常 | NullMoth 1.13.0。内屏物理接在独显上，所以 **BIOS 必须切"独显直连"** |
+| 显卡 | ✅ NVIDIA RTX 5060 Laptop，Metal 加速正常 | [NullMoth](https://github.com/nullmoth/nvidia-macos-driver) 1.13.0。内屏物理接在独显上，所以 **BIOS 必须切"独显直连"** |
 | 引导 | ✅ 从 U 盘 OpenCore 启动（FAT32，卷标 `1401`） | 本机**至今仍从 U 盘启动**：内置 ESP 与 Windows 的任何分区都没有动过。装机当天 20 次启动日志的完整分析见 [docs/troubleshooting.md](docs/troubleshooting.md) |
 | 内屏 | ✅ 2560×1600 @ 60 Hz | 面板会宣告 240 Hz，但拿不到 |
 | 外接显示器 | 🟡 可用但不支持热插拔 | 独显输出的外接屏能用，但必须在开机前接好；系统运行中插上不会点亮 |
@@ -113,12 +113,21 @@
 ## 致谢，以及本仓库**故意不放**的东西
 
 这里最关键的一环不是我做的：**NullMoth** —— 让 Blackwell 世代的 RTX 5060 Laptop 在 macOS 15 下能用的
-NVIDIA 驱动。没有它，这台机器就是一块黑屏。驱动的功劳、以及 U 盘上 `NullMoth/` 那套安装工具的功劳，
-全部属于它的作者。
+NVIDIA 驱动。没有它，这台机器就是一块黑屏。驱动的功劳、以及 `1401` 那套引导盘工具的功劳，
+全部属于 **[NullMoth Systems](https://nullmothsystems.com)**。
 
-**本仓库刻意不再分发这个驱动。** U 盘上原本有 `NullMoth/nullmoth-nvidia-1.13.0.tar.gz`（269,301,262 字节）
+| 要什么 | 去哪拿 |
+|---|---|
+| 作者主页 / 项目站 | <https://nullmothsystems.com> |
+| **NVIDIA 驱动（macOS 15）** | <https://github.com/nullmoth/nvidia-macos-driver> |
+| 驱动发布页（本机装的就是 `1.13.0`） | <https://github.com/nullmoth/nvidia-macos-driver/releases> |
+| **`1401` 引导盘工具（Windows）** | <https://github.com/nullmoth/1401> |
+| GitHub 组织 | <https://github.com/nullmoth> |
+
+驱动和工具都是免费公开项目（驱动的仓库说明写着 *Free, source included*，`1401` 的写着
+*Free, never for sale*），但是——**本仓库刻意不再分发它们。** U 盘上原本有 `NullMoth/nullmoth-nvidia-1.13.0.tar.gz`（269,301,262 字节）
 和 `1401-Mac-1.13.0.zip`；这两个包、`pkgroot/`、以及其中任何 `.kext`/`.bundle`/`.dylib` 都没有镜像到这里。
-请从项目自己的分发渠道获取并按它的说明安装。这里收录的是
+上面这两个仓库就是官方的分发渠道，请从那里获取并按它自己的说明安装。这里收录的是
 [`reports/nullmoth/system-profile.json`](reports/nullmoth/system-profile.json) —— 安装器自己在这台笔记本上
 写出的机器档案 —— 以及原封不动的 `README.txt` 与 `MANIFEST.txt`，这样下面的结果可以复现、可以核对，
 而不必转发他人的二进制文件。

@@ -22,8 +22,8 @@ Five steps, in the order they happened. The detail for each is in `docs/`.
 
 | # | Step | What it actually meant | Detail |
 |---|---|---|---|
-| 1 | Confirm the GPU driver | There is no Intel iGPU driver in any macOS, so the internal panel is only reachable through the dGPU. Establish that a driver for this GPU exists, that it covers **macOS 15**, and that the panel is wired to the dGPU so BIOS can be set to discrete-only | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) · [docs/hardware.md](docs/hardware.md) |
-| 2 | Build the boot stick | A Windows tool downloads macOS Sequoia 15, writes this `EFI/` to a FAT32 stick and labels it `1401`. Result: `EFI/` + `com.apple.recovery.boot/` + the driver package | [docs/install-guide.md](docs/install-guide.md#step-2--build-the-boot-stick) |
+| 1 | Confirm the GPU driver | There is no Intel iGPU driver in any macOS, so the internal panel is only reachable through the dGPU. Establish that a driver for this GPU exists ([NullMoth](https://github.com/nullmoth/nvidia-macos-driver)), that it covers **macOS 15**, and that the panel is wired to the dGPU so BIOS can be set to discrete-only | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) · [docs/hardware.md](docs/hardware.md) |
+| 2 | Build the boot stick with the [`1401`](https://github.com/nullmoth/1401) tool | A Windows tool downloads macOS Sequoia 15, writes this `EFI/` to a FAT32 stick and labels it `1401`. Result: `EFI/` + `com.apple.recovery.boot/` + the driver package | [docs/install-guide.md](docs/install-guide.md#step-2--build-the-boot-stick) |
 | 3 | Change BIOS | Secure Boot off, CSM off, Above 4G on, Resizable BAR on, **graphics mode = discrete only** | [docs/hardware.md](docs/hardware.md#bios) |
 | 4 | First boot panicked → fix `config.plist` | The as-delivered config carried three `Kernel → Patch` entries that mangle hyper-threading setup; the kernel died 0.85 s after hand-off. Disabling them produced the working config | [docs/troubleshooting.md](docs/troubleshooting.md) |
 | 5 | Reach the desktop, then install the driver | macOS installs with no GPU acceleration at all (framebuffer only). The driver is installed **inside macOS**, into `/Library/Extensions` — nothing GPU-related lives in the EFI | [docs/nvidia-nullmoth.md](docs/nvidia-nullmoth.md) |
@@ -42,7 +42,7 @@ Confirmed on this machine after the install that this repo documents.
 
 | Area | Status | Notes |
 |---|---|---|
-| Graphics | ✅ NVIDIA RTX 5060 Laptop, Metal accelerated | NullMoth 1.13.0. Internal panel is wired to the dGPU, so **BIOS MUX must be set to discrete-only** |
+| Graphics | ✅ NVIDIA RTX 5060 Laptop, Metal accelerated | [NullMoth](https://github.com/nullmoth/nvidia-macos-driver) 1.13.0. Internal panel is wired to the dGPU, so **BIOS MUX must be set to discrete-only** |
 | Boot | ✅ OpenCore from USB Fat32 (volume `1401`) | macOS is still started **from the stick** on this machine: the internal ESP and every Windows partition were left untouched. 20 boot logs from the bring-up day are summarised in [docs/troubleshooting.md](docs/troubleshooting.md) |
 | Internal display | ✅ 2560×1600 @ 60 Hz | 240 Hz mode is advertised by the panel but not reachable |
 | External display | 🟡 works, no hot-plug | An external monitor driven by the dGPU works, but it has to be connected before boot — plugging one in while macOS is running does not bring it up |
@@ -118,13 +118,22 @@ Legend: ✅ confirmed on this machine · 🟡 configured and expected to work, n
 
 The single most important component here is not mine: it is **NullMoth**, the NVIDIA driver that
 makes a Blackwell-era RTX 5060 Laptop usable under macOS 15. Without it this machine would be a
-black screen. Credit for the driver, and for the install tooling under `NullMoth/` on the installer
-stick, belongs entirely to its authors.
+black screen. Credit for the driver, and for the `1401` boot-stick tooling, belongs entirely to
+**[NullMoth Systems](https://nullmothsystems.com)**.
 
-**This repository deliberately does not redistribute the driver.** The stick carried
+| What | Where |
+|---|---|
+| Author / project site | <https://nullmothsystems.com> |
+| **NVIDIA driver for macOS 15** | <https://github.com/nullmoth/nvidia-macos-driver> |
+| Driver releases (this machine runs `1.13.0`) | <https://github.com/nullmoth/nvidia-macos-driver/releases> |
+| **`1401` boot-stick tool (Windows)** | <https://github.com/nullmoth/1401> |
+| GitHub organisation | <https://github.com/nullmoth> |
+
+Both are free, public projects — the driver repo says *Free, source included*, the `1401` repo says
+*Free, never for sale* — but **this repository deliberately does not redistribute them.** The stick carried
 `NullMoth/nullmoth-nvidia-1.13.0.tar.gz` (269,301,262 bytes) and `1401-Mac-1.13.0.zip`; neither the
-tarball, nor `pkgroot/`, nor any `.kext`/`.bundle`/`.dylib` from it is mirrored here. Get it from the
-project's own distribution channel and follow its instructions. What *is* included is
+tarball, nor `pkgroot/`, nor any `.kext`/`.bundle`/`.dylib` from it is mirrored here. Those two repos
+are the official distribution channel; get the package there and follow its own instructions. What *is* included is
 [`reports/nullmoth/system-profile.json`](reports/nullmoth/system-profile.json) — the machine profile
 the installer itself wrote on this laptop — plus its untouched `README.txt` and `MANIFEST.txt`, so the
 result below is reproducible and verifiable without shipping someone else's binaries.

@@ -49,8 +49,10 @@ with the Legion configuration this EFI is derived from.
 
 ## The NVIDIA driver
 
-**NullMoth**, package version **1.13.0**. Distributed by its authors through their own channel;
-**not mirrored in this repository**. See [nvidia-nullmoth.md](nvidia-nullmoth.md).
+**NullMoth**, package version **1.13.0**. Distributed by [NullMoth
+Systems](https://nullmothsystems.com) through their own channel — **not mirrored in this
+repository**. Get it from <https://github.com/nullmoth/nvidia-macos-driver>; the matching `1401`
+boot-stick tool is <https://github.com/nullmoth/1401>. See [nvidia-nullmoth.md](nvidia-nullmoth.md).
 
 ## The configuration this EFI is modelled on
 

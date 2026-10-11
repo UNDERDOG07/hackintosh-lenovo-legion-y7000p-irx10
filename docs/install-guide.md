@@ -31,8 +31,9 @@ Read [hardware.md](hardware.md) first. The three hard prerequisites there are as
 - A USB stick, 16 GB or larger. It will be wiped.
 - A wired network connection (there is no working Wi-Fi on this model).
 - Your BitLocker recovery key, written down somewhere that is not this laptop.
-- The NVIDIA driver package from the NullMoth distribution (see [nvidia-nullmoth.md](nvidia-nullmoth.md)).
-  It is **not** in this repo.
+- The NVIDIA driver package from the NullMoth distribution
+  (<https://github.com/nullmoth/nvidia-macos-driver/releases>, see
+  [nvidia-nullmoth.md](nvidia-nullmoth.md)). It is **not** in this repo.
 
 ---
 
@@ -52,7 +53,8 @@ driver. Details and the exact device IDs are in [hardware.md](hardware.md) and
 
 ## Step 2 — Build the boot stick
 
-The stick used here was produced by a Windows application (the `1401` tool) that:
+The stick used here was produced by a Windows application — the `1401` tool, published by the same
+authors as the driver at <https://github.com/nullmoth/1401> — which:
 
 1. asks for the target USB stick (4 GB minimum — use 16 GB),
 2. writes this repo's `EFI/` to it,
@@ -127,7 +129,8 @@ stick.
 Do this **after** the first successful desktop boot. Until then macOS runs with no GPU acceleration
 at all — that is expected, not a failure, and it is why step 1 comes first.
 
-With the original stick this is the `1401-Mac` companion app; by hand it is:
+With the original stick this is the `1401-Mac` companion app (part of
+<https://github.com/nullmoth/1401>); by hand it is:
 
 ```bash
 tar -xzf nullmoth-nvidia-1.13.0.tar.gz
