@@ -129,10 +129,14 @@ sudo pmset -a disablesleep 1 sleep 0 standby 0 hibernatemode 0 powernap 0 proxim
 
 ## Keyboard and lighting
 
-PS/2 keyboard via `VoodooPS2Controller` 2.3.8. The 4-zone RGB controller (`048d:c995`) is **not driven
-by anything in this EFI** — there is no `LegionRGBUSBFix`, so macOS has no way to change the lighting
-and it behaves however the firmware left it. This was **never tested** either way, because the owner
-does not use it; if you want it, `LegionRGBUSBFix` is the piece to port from the reference EFI.
+PS/2 keyboard via `VoodooPS2Controller` 2.3.8, and the **keyboard backlight works** — confirmed by the
+owner on this machine. The lighting state is held by the embedded controller/firmware, so the keys are
+lit in macOS without any driver in the EFI doing anything about it.
+
+What macOS cannot do here is *change* it: the 4-zone RGB controller (`048d:c995`) is **not driven by
+anything in this EFI** — there is no `LegionRGBUSBFix` — so per-zone colours and effects are
+unavailable and the keyboard simply keeps whatever the firmware left it at. If you want control over
+it, `LegionRGBUSBFix` is the piece to port from the reference EFI; it was never pursued here.
 
 ## Ethernet — works
 

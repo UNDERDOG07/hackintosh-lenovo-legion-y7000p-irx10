@@ -49,7 +49,7 @@
 | 有线网卡 | ✅ 可用 | Realtek `10EC:8168` + `RealtekRTL8111`。有线上网就是这台机器可用的那条路 |
 | 声卡 | ✅ 可用 | ALC257，`layout-id=99`；**笔记本内置音响有用**。内建麦克风**在系统测试里有反应**，但没有做过严谨测试 |
 | 键盘 | ✅ | VoodooPS2Controller |
-| 键盘灯 | ⚠️ 未测 | 本 EFI 没有 `LegionRGBUSBFix`，也就是没有任何东西在 macOS 里驱动 RGB 控制器；因为不太需要，所以从没测过 |
+| 键盘灯 | ✅ 可以用 | 背光由 EC/固件维持，进 macOS 后键盘是亮的（本机实测确认）。本 EFI 里没有 `LegionRGBUSBFix`，所以能用的是"亮着"，**不能**在系统里改分区颜色/灯效 |
 | 电池 / 传感器 | ✅ 可用 | VirtualSMC + SMCBatteryManager + SMCProcessor/SMCSuperIO，YogaSMC 接管 Legion EC：风扇在转，**Fn+Q 能切换性能模式** |
 | 摄像头 | ⚠️ 未测 | 本机还没有验证过 |
 | 系统休眠 | ❌ 已禁用 | 驱动唤醒后会丢显卡。屏幕休眠可用 |

@@ -17,7 +17,7 @@ scan on this machine reports.
 | Ethernet | Realtek PCIe GbE | `10EC:8168` | ✅ works (`RealtekRTL8111`) — the reliable network path on this machine |
 | Audio | Realtek ALC257 codec, driven through Intel SST | `8086:7A50` | ✅ built-in speakers work; the internal mic responds to the sound test (not rigorously tested) |
 | Trackpad | I2C HID touchpad on GPIO | `INTC1085` (`GPI0`) | ❌ **not working** — the kext stack is present but the touchpad never responded on this machine |
-| Keyboard | PS/2, plus 4-zone RGB controller | RGB: `048d:c995` | ✅ keyboard; ⚠️ lighting untested (nothing in the EFI drives it) |
+| Keyboard | PS/2, plus 4-zone RGB controller | RGB: `048d:c995` | ✅ keyboard; ✅ keyboard backlight works (held by the firmware) — the RGB zones themselves are not drivable from macOS, see [peripherals.md](peripherals.md) |
 | Storage | 2 × NVMe — UMIS `RPJYJ1T24MM`, YMTC `YMSS2ED08D2`, **VMD disabled** | — | ✅ neither is on the macOS NVMe blacklist |
 | Battery / sensors | Legion EC `0x5508` generation | — | ✅ works — VirtualSMC + SMCBatteryManager, fans and Fn+Q performance mode respond |
 | Camera | built-in UVC | — | ⚠️ not tested on this machine |

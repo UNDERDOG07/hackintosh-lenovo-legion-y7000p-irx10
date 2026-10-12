@@ -52,7 +52,7 @@ Confirmed on this machine after the install that this repo documents.
 | Ethernet | ✅ works | Realtek `10EC:8168` with `RealtekRTL8111`. This is the network path to use — it is the one that works |
 | Audio | ✅ works | ALC257 with `layout-id=99`; the **built-in speakers work**. The internal microphone also *responds* — it registers in the system sound test, but it was not rigorously tested |
 | Keyboard | ✅ | VoodooPS2Controller |
-| Keyboard lighting | ⚠️ not tested | No `LegionRGBUSBFix` in this EFI, so nothing here drives the RGB controller — and it was never looked at, because the owner does not need it |
+| Keyboard lighting | ✅ works | The backlight is held by the EC/firmware, so the keys are lit in macOS — confirmed on this machine. There is no `LegionRGBUSBFix` in this EFI, so what works is *being lit*: **changing** the 4-zone colours or effects from macOS is not possible |
 | Battery / sensors | ✅ works | VirtualSMC + SMCBatteryManager + SMCProcessor/SMCSuperIO, with YogaSMC for the Legion EC: fans spin and **Fn+Q switches performance mode** on this machine |
 | Camera | ⚠️ untested | Never checked on this machine |
 | System sleep | ❌ disabled | The driver loses the GPU on wake. Display sleep works |

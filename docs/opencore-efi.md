@@ -143,10 +143,11 @@ NVIDIA path is handled by the driver in `/Library/Extensions`, not by the EFI.
 The reference EFI for the Pro 5 has kexts this one does not: `AirportItlwm`, `LegionRGBUSBFix`,
 `UTBMap`, `VoodooI2C-RPL-GPIO` (a rebuilt VoodooGPIO) and `YogaSMC-Legion`. This machine uses
 `itlwm` + `UTBDefault` + stock `VoodooI2C`/`YogaSMC` instead, and has **no** keyboard-lighting fix.
-If you want the RGB lighting, that is the piece to port over — it was never pursued (or tested) here,
-because the owner does not use it.
+The missing `LegionRGBUSBFix` costs less than it looks: the keyboard backlight itself works here (the
+firmware keeps it lit, see [peripherals.md](peripherals.md)) — what cannot be done without it is
+*changing* the 4-zone colours or effects from macOS.
 
-Two of those gaps have a visible consequence on this machine: the keyboard lighting does nothing, and
-the **touchpad does not work** (see [peripherals.md](peripherals.md)). `VoodooI2C-RPL-GPIO` is the
+Of those gaps, one has a visible consequence on this machine: the **touchpad does not work** (see
+[peripherals.md](peripherals.md)). `VoodooI2C-RPL-GPIO` is the
 first thing to try for the touchpad — the stock `VoodooGPIO` in this EFI has no Raptor Lake-HX GPIO
 support, and the same controller ID works in the reference build where that kext is present.
