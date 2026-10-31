@@ -1,6 +1,22 @@
 # Lenovo Legion Y7000P IRX10 (83NN) — macOS 15 Sequoia Hackintosh
 
-[中文](README.md) · **English**
+[中文](README.md) · **English**> **This repository is archived and no longer updated.**
+>
+> What is here is the complete macOS 15 Sequoia build, kept as it was.
+>
+> The machine later moved to macOS 26, where the driver work changed a lot: a different driver
+> generation, privacy prompts that no longer appear, boot arguments needed for delta updates, and a
+> Secure Boot attempt that failed on both routes. None of that is in this repo.
+>
+> The 26 material lives in its own repository: **[legion-y7000p-update-macos26-drivers](https://github.com/UNDERDOG07/legion-y7000p-update-macos26-drivers)** —
+> driver fixes only, no install guide.
+>
+> **Why two repositories**: they answer different questions. This one is "how the machine was built
+> from nothing" — the first-boot panic, where the EFI came from, how BIOS was set. The other is
+> "what breaks afterwards and how to fix it" — starting from a system that already runs. The install
+> path itself changed too: 1401 installs 26 directly now, so "upgrade from 15" is no longer a route
+> anyone takes, and leaving that here would mislead. Split this way, the repository name tells you
+> which one to open; you do not have to read a version number first to find out.
 
 A complete, actually-booted OpenCore EFI and field notes for running **macOS 15 Sequoia** on a
 **Lenovo Legion Y7000P IRX10** (`i9-14900HX` + **NVIDIA RTX 5060 Laptop**, driven by the **NullMoth**
