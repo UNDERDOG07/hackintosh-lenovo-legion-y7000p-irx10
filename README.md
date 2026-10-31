@@ -1,6 +1,8 @@
 # 联想 Legion Y7000P IRX10（83NN）· macOS 15 Sequoia 黑苹果
 
-**中文** · [English](README.en.md)> **本仓库已归档，不再更新。**
+**中文** · [English](README.en.md)
+
+> **本仓库已归档，不再更新。**
 >
 > 这里记录的是 **macOS 15 Sequoia** 时期的完整装机过程，内容保持原样。
 >
