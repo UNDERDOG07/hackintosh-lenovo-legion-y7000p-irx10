@@ -1,6 +1,14 @@
 # 联想 Legion Y7000P IRX10（83NN）· macOS 15 Sequoia 黑苹果
 
-**中文** · [English](README.en.md)
+**中文** · [English](README.en.md)> **本仓库已归档，不再更新。**
+>
+> 这里记录的是 **macOS 15 Sequoia** 时期的完整装机过程，内容保持原样。
+>
+> 系统后来升到了 macOS 26，硬件驱动的修法变了很多：驱动版本换代、隐私授权不再弹窗、增量更新要加参数、Secure Boot 两条路都试过并且都失败。这些不在本仓库里。
+>
+> 26 的部分在单独一个仓库：**[legion-y7000p-update-macos26-drivers](https://github.com/UNDERDOG07/legion-y7000p-update-macos26-drivers)** —— 那里只讲装好之后每个硬件怎么修，不讲安装。
+>
+> **为什么拆成两个**：它们回答的不是同一个问题。这里是「怎么从零把一台机器装起来」—— 首次启动的 panic、EFI 的来历、BIOS 怎么设；那边是「装好之后哪坏了、怎么修」—— 起点是系统已经在跑。而且安装路径本身也变了：1401 现在能直接装 26，「从 15 升级上来」不再是一条有人走的路，放在这里会误导。分开之后，看仓库名就知道该进哪个，不必先读一遍再判断版本对不对。
 
 一套**实际跑起来过**的 OpenCore EFI 与完整现场笔记：在联想 Legion Y7000P IRX10（`i9-14900HX` +
 **NVIDIA RTX 5060 Laptop**，由 **NullMoth** 驱动）上，把 **macOS 15 Sequoia** 作为第二系统
