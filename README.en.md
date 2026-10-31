@@ -1,6 +1,8 @@
 # Lenovo Legion Y7000P IRX10 (83NN) — macOS 15 Sequoia Hackintosh
 
-[中文](README.md) · **English**> **This repository is archived and no longer updated.**
+[中文](README.md) · **English**
+
+> **This repository is archived and no longer updated.**
 >
 > What is here is the complete macOS 15 Sequoia build, kept as it was.
 >
